@@ -4,9 +4,30 @@
     "public_url": "http://localhost:5000",
     "last_updated": "4/8/2026, 11:54:55 PM",
     "is_fire_active": true,
-    "last_alert_conf": 0.48
+    "last_alert_conf": 0.33
   },
   "alerts": [
+    {
+      "id": 1776405711946,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.33,
+      "stream_url": "https://provincial-pregnancy-dragon-cart.trycloudflare.com/video_feed",
+      "timestamp": "2026-04-17T06:01:51.946Z"
+    },
+    {
+      "id": 1776405660251,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.51,
+      "stream_url": "https://provincial-pregnancy-dragon-cart.trycloudflare.com/video_feed",
+      "timestamp": "2026-04-17T06:01:00.251Z"
+    },
+    {
+      "id": 1776405598535,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.33,
+      "stream_url": "https://provincial-pregnancy-dragon-cart.trycloudflare.com",
+      "timestamp": "2026-04-17T05:59:58.535Z"
+    },
     {
       "id": 1776404763207,
       "event": "FIRE_DETECTED",

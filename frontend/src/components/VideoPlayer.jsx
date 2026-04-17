@@ -11,7 +11,7 @@ const VideoGallery = () => {
   // 🎥 Set playback speed
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.playbackRate = 0.5;
+      videoRef.current.playbackRate = 0.8;
     }
   }, [selectedVideo]);
 

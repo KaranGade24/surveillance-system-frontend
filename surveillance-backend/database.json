@@ -4,9 +4,37 @@
     "public_url": "http://localhost:5000",
     "last_updated": "4/8/2026, 11:54:55 PM",
     "is_fire_active": true,
-    "last_alert_conf": 0.33
+    "last_alert_conf": 0.31
   },
   "alerts": [
+    {
+      "id": 1776406201226,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.31,
+      "stream_url": "https://surf-nut-italic-interface.trycloudflare.com/video_feed",
+      "timestamp": "2026-04-17T06:10:01.226Z"
+    },
+    {
+      "id": 1776406166020,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.32,
+      "stream_url": "https://surf-nut-italic-interface.trycloudflare.com/video_feed",
+      "timestamp": "2026-04-17T06:09:26.020Z"
+    },
+    {
+      "id": 1776406132321,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.41,
+      "stream_url": "https://surf-nut-italic-interface.trycloudflare.com/video_feed",
+      "timestamp": "2026-04-17T06:08:52.321Z"
+    },
+    {
+      "id": 1776406103776,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.47,
+      "stream_url": "https://surf-nut-italic-interface.trycloudflare.com",
+      "timestamp": "2026-04-17T06:08:23.776Z"
+    },
     {
       "id": 1776405711946,
       "event": "FIRE_DETECTED",

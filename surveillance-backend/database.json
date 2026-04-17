@@ -1,0 +1,200 @@
+{
+  "systemState": {
+    "id": "pi_station_1",
+    "public_url": "http://localhost:5000",
+    "last_updated": "4/8/2026, 11:54:55 PM",
+    "is_fire_active": true,
+    "last_alert_conf": 0.48
+  },
+  "alerts": [
+    {
+      "id": 1776404763207,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.48,
+      "stream_url": "https://last-alike-sitemap-laboratories.trycloudflare.com",
+      "timestamp": "2026-04-17T05:46:03.207Z"
+    },
+    {
+      "id": 1776404487954,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.4,
+      "stream_url": "https://holiday-penetration-member-long.trycloudflare.com",
+      "timestamp": "2026-04-17T05:41:27.954Z"
+    },
+    {
+      "id": 1776404438251,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.32,
+      "stream_url": "https://holiday-penetration-member-long.trycloudflare.com",
+      "timestamp": "2026-04-17T05:40:38.251Z"
+    },
+    {
+      "id": 1776404402469,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.71,
+      "stream_url": "https://holiday-penetration-member-long.trycloudflare.com",
+      "timestamp": "2026-04-17T05:40:02.469Z"
+    },
+    {
+      "id": 1776403610656,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.31,
+      "stream_url": "https://toolbox-amend-satin-throughout.trycloudflare.com",
+      "timestamp": "2026-04-17T05:26:50.656Z"
+    },
+    {
+      "id": 1776403519424,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.4,
+      "stream_url": "https://toolbox-amend-satin-throughout.trycloudflare.com",
+      "timestamp": "2026-04-17T05:25:19.424Z"
+    },
+    {
+      "id": 1776403518662,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.41,
+      "stream_url": "https://toolbox-amend-satin-throughout.trycloudflare.com",
+      "timestamp": "2026-04-17T05:25:18.662Z"
+    },
+    {
+      "id": 1776403350421,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.4,
+      "stream_url": "https://toolbox-amend-satin-throughout.trycloudflare.com",
+      "timestamp": "2026-04-17T05:22:30.421Z"
+    },
+    {
+      "id": 1776403349601,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.65,
+      "stream_url": "https://toolbox-amend-satin-throughout.trycloudflare.com",
+      "timestamp": "2026-04-17T05:22:29.601Z"
+    },
+    {
+      "id": 1776403255828,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.6,
+      "stream_url": "https://toolbox-amend-satin-throughout.trycloudflare.com",
+      "timestamp": "2026-04-17T05:20:55.828Z"
+    },
+    {
+      "id": 1776403183760,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.49,
+      "stream_url": "https://toolbox-amend-satin-throughout.trycloudflare.com",
+      "timestamp": "2026-04-17T05:19:43.760Z"
+    },
+    {
+      "id": 1776402950229,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.6,
+      "stream_url": "https://toolbox-amend-satin-throughout.trycloudflare.com",
+      "timestamp": "2026-04-17T05:15:50.229Z"
+    },
+    {
+      "id": 1776402949769,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.38,
+      "stream_url": "https://toolbox-amend-satin-throughout.trycloudflare.com",
+      "timestamp": "2026-04-17T05:15:49.769Z"
+    },
+    {
+      "id": 1776402742864,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.84,
+      "stream_url": "https://toolbox-amend-satin-throughout.trycloudflare.com",
+      "timestamp": "2026-04-17T05:12:22.865Z"
+    },
+    {
+      "id": 1776402742102,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.32,
+      "stream_url": "https://toolbox-amend-satin-throughout.trycloudflare.com",
+      "timestamp": "2026-04-17T05:12:22.102Z"
+    },
+    {
+      "id": 1776402599897,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.37,
+      "stream_url": "https://toolbox-amend-satin-throughout.trycloudflare.com",
+      "timestamp": "2026-04-17T05:09:59.897Z"
+    },
+    {
+      "id": 1776402500210,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.35,
+      "stream_url": "https://photographs-tagged-objectives-induction.trycloudflare.com/video_feed",
+      "timestamp": "2026-04-17T05:08:20.210Z"
+    },
+    {
+      "id": 1776402444491,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.32,
+      "stream_url": "https://photographs-tagged-objectives-induction.trycloudflare.com",
+      "timestamp": "2026-04-17T05:07:24.491Z"
+    },
+    {
+      "id": 1775714472210,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.71,
+      "stream_url": "https://roller-acknowledged-introduce-industrial.trycloudflare.com",
+      "timestamp": "2026-04-09T06:01:12.210Z"
+    },
+    {
+      "id": 1775629347822,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.82,
+      "stream_url": "https://analyses-pgp-gadgets-ability.trycloudflare.com/video_feed",
+      "timestamp": "2026-04-08T06:22:27.822Z"
+    },
+    {
+      "id": 1775629317199,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.33,
+      "stream_url": "https://analyses-pgp-gadgets-ability.trycloudflare.com/video_feed",
+      "timestamp": "2026-04-08T06:21:57.199Z"
+    },
+    {
+      "id": 1775629275410,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.89,
+      "stream_url": "https://analyses-pgp-gadgets-ability.trycloudflare.com",
+      "timestamp": "2026-04-08T06:21:15.410Z"
+    },
+    {
+      "id": 1775629271944,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.88,
+      "stream_url": "https://analyses-pgp-gadgets-ability.trycloudflare.com",
+      "timestamp": "2026-04-08T06:21:11.944Z"
+    },
+    {
+      "id": 1775629233757,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.79,
+      "stream_url": "https://analyses-pgp-gadgets-ability.trycloudflare.com",
+      "timestamp": "2026-04-08T06:20:33.757Z"
+    },
+    {
+      "id": 1775629006676,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.5,
+      "stream_url": "https://singles-brooklyn-dana-legislative.trycloudflare.com/video_feed",
+      "timestamp": "2026-04-08T06:16:46.676Z"
+    },
+    {
+      "id": 1775628975156,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.32,
+      "stream_url": "https://singles-brooklyn-dana-legislative.trycloudflare.com/video_feed",
+      "timestamp": "2026-04-08T06:16:15.156Z"
+    },
+    {
+      "id": 1775628916151,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.7,
+      "stream_url": "https://singles-brooklyn-dana-legislative.trycloudflare.com/video_feed",
+      "timestamp": "2026-04-08T06:15:16.151Z"
+    }
+  ]
+}

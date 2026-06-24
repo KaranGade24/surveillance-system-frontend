@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "../App.css";
 
 export default function LiveFeed() {
-  const streamUrl = "http://192.168.43.222:5000";
+  const streamUrl = "http://192.168.43.90:5000";
   const backendUrl =
     "https://5000-firebase-survillancesystem-1762004374655.cluster-cd3bsnf6r5bemwki2bxljme5as.cloudworkstations.dev";
   const [refreshKey, setRefreshKey] = useState(Date.now());

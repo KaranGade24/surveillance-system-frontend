@@ -4,7 +4,7 @@
     "public_url": "http://localhost:5000",
     "last_updated": "4/8/2026, 11:54:55 PM",
     "is_fire_active": false,
-    "last_alert_conf": 0.4
+    "last_alert_conf": 0.75
   },
   "alerts": [
     {
@@ -440,6 +440,97 @@
       "confidence": 0.4,
       "stream_url": "https://underwear-increases-applies-settlement.trycloudflare.com",
       "timestamp": "2026-06-24T14:42:09.348Z"
+    },
+    {
+      "id": 1782312519231,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.83,
+      "stream_url": "https://satisfactory-answers-wife-indicates.trycloudflare.com",
+      "timestamp": "2026-06-24T14:48:39.231Z"
+    },
+    {
+      "id": 1782312576290,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.39,
+      "stream_url": "https://satisfactory-answers-wife-indicates.trycloudflare.com",
+      "timestamp": "2026-06-24T14:49:36.290Z"
+    },
+    {
+      "id": 1782312613068,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.62,
+      "stream_url": "https://satisfactory-answers-wife-indicates.trycloudflare.com",
+      "timestamp": "2026-06-24T14:50:13.068Z"
+    },
+    {
+      "id": 1782312645552,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.39,
+      "stream_url": "https://satisfactory-answers-wife-indicates.trycloudflare.com",
+      "timestamp": "2026-06-24T14:50:45.552Z"
+    },
+    {
+      "id": 1782312776478,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.48,
+      "stream_url": "https://satisfactory-answers-wife-indicates.trycloudflare.com",
+      "timestamp": "2026-06-24T14:52:56.478Z"
+    },
+    {
+      "id": 1782312842063,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.74,
+      "stream_url": "https://satisfactory-answers-wife-indicates.trycloudflare.com",
+      "timestamp": "2026-06-24T14:54:02.063Z"
+    },
+    {
+      "id": 1782319821971,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.59,
+      "stream_url": "https://carnival-hitting-estates-locale.trycloudflare.com",
+      "timestamp": "2026-06-24T16:50:21.971Z"
+    },
+    {
+      "id": 1782320008196,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.5,
+      "stream_url": "https://include-new-lunch-bell.trycloudflare.com",
+      "timestamp": "2026-06-24T16:53:28.196Z"
+    },
+    {
+      "id": 1782321368016,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.79,
+      "stream_url": "https://finishing-guys-concerning-investing.trycloudflare.com",
+      "timestamp": "2026-06-24T17:16:08.016Z"
+    },
+    {
+      "id": 1782321444811,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.76,
+      "stream_url": "https://surveillance-warrant-hunter-mechanics.trycloudflare.com",
+      "timestamp": "2026-06-24T17:17:24.811Z"
+    },
+    {
+      "id": 1782325786090,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.8,
+      "stream_url": "https://flour-extra-intend-criterion.trycloudflare.com",
+      "timestamp": "2026-06-24T18:29:46.090Z"
+    },
+    {
+      "id": 1782326167459,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.76,
+      "stream_url": "https://elected-zero-establish-replied.trycloudflare.com",
+      "timestamp": "2026-06-24T18:36:07.459Z"
+    },
+    {
+      "id": 1782326924116,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.75,
+      "stream_url": "https://revelation-described-learn-ridge.trycloudflare.com",
+      "timestamp": "2026-06-24T18:48:44.116Z"
     }
   ]
 }

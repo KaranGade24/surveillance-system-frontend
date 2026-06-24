@@ -124,148 +124,351 @@ function convertToStreamable(inputPath) {
 
 // 3. Main Streaming Logic
 
-let globalWatcher = null; // Prevent multiple watchers from being created
+
+let globalWatcher = null;
+let ffmpegProcess = null;
 
 async function startStreaming(streamUrl) {
-  const folderId = await getTimestampFolderId();
-  const tempDir = path.join(__dirname, "temp_segments");
+  try {
+    const folderId = await getTimestampFolderId();
 
-  if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir, { recursive: true });
+    const tempDir = path.join(__dirname, "temp_segments");
 
-  const ffmpeg = spawn("ffmpeg", [
-    "-f",
-    "mjpeg",
-    "-i",
-    streamUrl,
+    if (!fs.existsSync(tempDir)) {
+      fs.mkdirSync(tempDir, { recursive: true });
+    }
 
-    "-c:v",
-    "libx264",
-    "-preset",
-    "ultrafast",
-    "-tune",
-    "zerolatency",
-    "-g",
-    "30",
+    console.log("🎥 Starting recording from:", streamUrl);
 
-    "-pix_fmt",
-    "yuv420p",
+    // Kill old recorder if already running
+    if (ffmpegProcess) {
+      try {
+        ffmpegProcess.kill("SIGINT");
+      } catch (err) {
+        console.log("Old FFmpeg cleanup failed");
+      }
+    }
 
-    // "-movflags", "+faststart", // ⭐ added (for browser playback)
+    ffmpegProcess = spawn("ffmpeg", [
+      "-fflags", "+genpts+nobuffer",
+      "-use_wallclock_as_timestamps", "1",
+    
+      "-f", "mjpeg",
+      "-r", "5", // force 5 FPS
+      "-i", streamUrl,
+    
+      "-vf", "fps=5",
+    
+      "-an",
+    
+      "-c:v", "libx264",
+      "-preset", "ultrafast",
+      "-tune", "zerolatency",
+    
+      "-pix_fmt", "yuv420p",
+    
+      // IMPORTANT
+      "-force_key_frames", "expr:gte(t,n_forced*20)",
+      "-g", "100",
+    
+      "-f", "segment",
+      "-segment_time", "20",
+      "-segment_atclocktime", "1",
+      "-reset_timestamps", "1",
+      "-strftime", "1",
+    
+      path.join(
+        tempDir,
+        "rec_%Y-%m-%d_%H-%M-%S.mp4"
+      )
+    ]);
 
-    "-f",
-    "segment",
-    "-segment_time",
-    "20",
-    "-reset_timestamps",
-    "1",
-    "-strftime",
-    "1",
 
-    path.join(tempDir, "rec_%Y-%m-%d_%H-%M-%S.mp4"),
-  ]);
 
-  // Only initialize the watcher once
-  if (!globalWatcher) {
-    globalWatcher = chokidar.watch(tempDir, {
-      persistent: true,
-      ignoreInitial: true, // Don't upload old files on startup
-      awaitWriteFinish: {
-        stabilityThreshold: 3000, // Wait 3s after FFmpeg is done with a segment
-        pollInterval: 500,
-      },
+    ffmpegProcess.stderr.on("data", (data) => {
+      console.log("FFMPEG:", data.toString());
     });
 
-    let lastFile = null;
+    ffmpegProcess.on("close", (code) => {
+      console.log(`FFmpeg exited with code ${code}`);
+    });
 
-    globalWatcher.on("add", async (filePath) => {
-      if (lastFile && fs.existsSync(lastFile)) {
-        const fileToUpload = lastFile;
-        const fileNameToUpload = path.basename(fileToUpload);
-        const thumbPath = fileToUpload.replace(".mp4", ".jpg"); // Temp thumb name
+    // Create watcher only once
+    if (!globalWatcher) {
+      globalWatcher = chokidar.watch(tempDir, {
+        persistent: true,
+        ignoreInitial: true,
+        awaitWriteFinish: {
+          stabilityThreshold: 5000,
+          pollInterval: 500,
+        },
+      });
 
-        (async (targetFile, targetName, targetThumb) => {
+      let previousFile = null;
+
+      globalWatcher.on("add", async (filePath) => {
+        console.log("📁 New segment:", filePath);
+
+        // upload previous segment only
+        if (previousFile && fs.existsSync(previousFile)) {
+
+          const targetFile = previousFile;
+          const targetName = path.basename(targetFile);
+          const thumbPath = targetFile.replace(".mp4", ".jpg");
+
           try {
             const stats = fs.statSync(targetFile);
 
-            if (stats.size > 600000) {
-              // 1. Generate thumbnail from the 1st second of the video
-              await new Promise((resolve, reject) => {
-                const extract = spawn("ffmpeg", [
-                  "-i",
-                  targetFile,
-                  "-ss",
-                  "00:00:01", // Capture at 1 second
-                  "-vframes",
-                  "1", // Only 1 frame
-                  "-q:v",
-                  "2", // High quality
-                  targetThumb,
-                ]);
-                extract.on("close", resolve);
-                extract.on("error", reject);
-              });
+            console.log(
+              `📦 ${targetName} Size: ${(stats.size / 1024).toFixed(2)} KB`
+            );
 
-              // 2. Read thumb as Base64 for Google Drive contentHints
-              // Note: Base64 must be URL-safe (replace + with -, / with _)
-              const thumbBase64 = fs
-                .readFileSync(targetThumb)
-                .toString("base64")
-                .replace(/\+/g, "-")
-                .replace(/\//g, "_");
-
-              const streamableFile = await convertToStreamable(targetFile);
-
-              const uploadedFile = await drive.files.create({
-                requestBody: {
-                  name: targetName,
-                  parents: [folderId],
-                },
-                media: {
-                  mimeType: "video/mp4",
-                  body: fs.createReadStream(streamableFile), // ✅ upload converted file
-                },
-              });
-
-              // 3. Set public permissions
-              await drive.permissions.create({
-                fileId: uploadedFile.data.id,
-                requestBody: { role: "reader", type: "anyone" },
-              });
-
-              // 4. Cleanup
-              try {
-                if (fs.existsSync(targetFile)) fs.unlinkSync(targetFile);
-                if (fs.existsSync(targetThumb)) fs.unlinkSync(targetThumb);
-                if (fs.existsSync(streamableFile))
-                  fs.unlinkSync(streamableFile);
-              } catch (err) {
-                console.error("❌ Error in cleanup", err);
-              }
+            // Skip empty/corrupted files only
+            if (stats.size < 5000) {
+              console.log("⚠️ Skipping tiny file");
+              previousFile = filePath;
+              return;
             }
+
+            // Generate thumbnail
+            await new Promise((resolve, reject) => {
+
+              const thumb = spawn("ffmpeg", [
+                "-y",
+                "-i",
+                targetFile,
+                "-ss",
+                "00:00:01",
+                "-frames:v",
+                "1",
+                thumbPath
+              ]);
+
+              thumb.on("close", resolve);
+              thumb.on("error", reject);
+            });
+
+            // Convert to browser compatible MP4
+            const streamableFile =
+              await convertToStreamable(targetFile);
+
+            console.log("⬆️ Uploading:", targetName);
+
+            const uploaded = await drive.files.create({
+              requestBody: {
+                name: targetName,
+                parents: [folderId],
+              },
+
+              media: {
+                mimeType: "video/mp4",
+                body: fs.createReadStream(streamableFile),
+              },
+
+              fields: "id,name",
+            });
+
+            console.log(
+              "✅ Uploaded:",
+              uploaded.data.id
+            );
+
+            await drive.permissions.create({
+              fileId: uploaded.data.id,
+              requestBody: {
+                role: "reader",
+                type: "anyone",
+              },
+            });
+
+            console.log("🌍 Public permission granted");
+
+            // Cleanup
+            try {
+              if (fs.existsSync(targetFile))
+                fs.unlinkSync(targetFile);
+
+              if (fs.existsSync(streamableFile))
+                fs.unlinkSync(streamableFile);
+
+              if (fs.existsSync(thumbPath))
+                fs.unlinkSync(thumbPath);
+
+            } catch (cleanupErr) {
+              console.log("Cleanup failed:", cleanupErr.message);
+            }
+
           } catch (err) {
-            console.error(`❌ Upload failed for ${targetName}:`, err.message);
+            console.error(
+              `❌ Upload failed for ${targetName}`
+            );
+
+            console.error(
+              err.response?.data || err
+            );
           }
-        })(fileToUpload, fileNameToUpload, thumbPath);
-      }
+        }
 
-      lastFile = filePath;
-    });
-  }
-
-  ffmpeg.stderr.on("data", (data) => {
-    if (data.toString().includes("frame=")) {
-      // process.stdout.write(
-      //   `\r📹 Recording Status: ${data.toString().split("Lsize")[0]}`
-      // );
+        // Keep latest file as currently recording segment
+        previousFile = filePath;
+      });
     }
-  });
+
+  } catch (err) {
+    console.error("❌ startStreaming error:", err);
+  }
 }
+
+// async function startStreaming(streamUrl) {
+//   const folderId = await getTimestampFolderId();
+//   const tempDir = path.join(__dirname, "temp_segments");
+
+//   if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir, { recursive: true });
+
+//   const ffmpeg = spawn("ffmpeg", [
+//     "-f",
+//     "mjpeg",
+//     "-i",
+//     streamUrl,
+
+//     "-c:v",
+//     "libx264",
+//     "-preset",
+//     "ultrafast",
+//     "-tune",
+//     "zerolatency",
+//     "-g",
+//     "30",
+
+//     "-pix_fmt",
+//     "yuv420p",
+
+//     // "-movflags", "+faststart", // ⭐ added (for browser playback)
+
+//     "-f",
+//     "segment",
+//     "-segment_time",
+//     "20",
+//     "-reset_timestamps",
+//     "1",
+//     "-strftime",
+//     "1",
+
+//     path.join(tempDir, "rec_%Y-%m-%d_%H-%M-%S.mp4"),
+//   ]);
+
+//   // Only initialize the watcher once
+//   if (!globalWatcher) {
+//     globalWatcher = chokidar.watch(tempDir, {
+//       persistent: true,
+//       ignoreInitial: true, // Don't upload old files on startup
+//       awaitWriteFinish: {
+//         stabilityThreshold: 3000, // Wait 3s after FFmpeg is done with a segment
+//         pollInterval: 500,
+//       },
+//     });
+
+//     let lastFile = null;
+
+//     globalWatcher.on("add", async (filePath) => {
+//       if (lastFile && fs.existsSync(lastFile)) {
+//         const fileToUpload = lastFile;
+//         const fileNameToUpload = path.basename(fileToUpload);
+//         const thumbPath = fileToUpload.replace(".mp4", ".jpg"); // Temp thumb name
+
+//         (async (targetFile, targetName, targetThumb) => {
+//           try {
+//             const stats = fs.statSync(targetFile);
+
+//             console.log("Segment size:", stats.size);
+
+//             if (stats.size > 600000) {
+//               // 1. Generate thumbnail from the 1st second of the video
+//               await new Promise((resolve, reject) => {
+//                 const extract = spawn("ffmpeg", [
+//                   "-i",
+//                   targetFile,
+//                   "-ss",
+//                   "00:00:01", // Capture at 1 second
+//                   "-vframes",
+//                   "1", // Only 1 frame
+//                   "-q:v",
+//                   "2", // High quality
+//                   targetThumb,
+//                 ]);
+//                 extract.on("close", resolve);
+//                 extract.on("error", reject);
+//               });
+
+//               // 2. Read thumb as Base64 for Google Drive contentHints
+//               // Note: Base64 must be URL-safe (replace + with -, / with _)
+//               const thumbBase64 = fs
+//                 .readFileSync(targetThumb)
+//                 .toString("base64")
+//                 .replace(/\+/g, "-")
+//                 .replace(/\//g, "_");
+
+//               const streamableFile = await convertToStreamable(targetFile);
+
+//               const uploadedFile = await drive.files.create({
+//                 requestBody: {
+//                   name: targetName,
+//                   parents: [folderId],
+//                 },
+//                 media: {
+//                   mimeType: "video/mp4",
+//                   body: fs.createReadStream(streamableFile), // ✅ upload converted file
+//                 },
+//               });
+
+//               // 3. Set public permissions
+//               await drive.permissions.create({
+//                 fileId: uploadedFile.data.id,
+//                 requestBody: { role: "reader", type: "anyone" },
+//               });
+
+//               // 4. Cleanup
+//               try {
+//                 if (fs.existsSync(targetFile)) fs.unlinkSync(targetFile);
+//                 if (fs.existsSync(targetThumb)) fs.unlinkSync(targetThumb);
+//                 if (fs.existsSync(streamableFile))
+//                   fs.unlinkSync(streamableFile);
+//               } catch (err) {
+//                 console.error("❌ Error in cleanup", err);
+//               }
+//             }
+//           } catch (err) {
+//             console.error(`❌ Upload failed for ${targetName}:`, err.message);
+//             console.error(err.response?.data || err);
+//           }
+//         })(fileToUpload, fileNameToUpload, thumbPath);
+//       }
+
+//       lastFile = filePath;
+//     });
+//   }
+
+//   ffmpeg.stderr.on("data", (data) => {
+//     if 
+//     (data.toString().includes("frame=")) {
+//       // process.stdout.write(
+//       //   `\r📹 Recording Status: ${data.toString().split("Lsize")[0]}`
+//       // );
+//     }
+//   });
+// }
 // 4. POST Endpoint
+
+
+
+
+
+
 const driveStreamingHandler = async (url) => {
   try {
     if (!url) return;
 
-    // startStreaming(url);
+    startStreaming(url);
   } catch (err) {
     console.error("Streaming error:", err);
   } // Runs in background}
@@ -334,7 +537,11 @@ app.post("/fire-alert", async (req, res) => {
     db.systemState.last_alert_conf = confidence;
     db.alerts.push(newAlert);
     writeDB(db);
-    await axios.post(`${ESPUrl}/start`);
+    try{
+      await axios.post(`${ESPUrl}/start`);
+    }catch(err){
+      console.log("Error:",err);
+    }
   }
 
   console.info(`🔥 Fire Alert Saved! Conf: ${confidence}%`);
@@ -509,6 +716,27 @@ app.get("/stream/:id", async (req, res) => {
   }
 });
 
+
+process.on("SIGINT", () => {
+  console.log("\n🛑 Shutting down server...");
+
+  if (ffmpegProcess) {
+    console.log("🛑 Stopping FFmpeg...");
+    ffmpegProcess.kill("SIGINT");
+  }
+
+  process.exit(0);
+});
+
+process.on("SIGTERM", () => {
+  console.log("\n🛑 SIGTERM received...");
+
+  if (ffmpegProcess) {
+    ffmpegProcess.kill("SIGINT");
+  }
+
+  process.exit(0);
+});
 // ─────────────────────────────────────────────
 // START SERVER
 // ─────────────────────────────────────────────

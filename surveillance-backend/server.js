@@ -265,7 +265,7 @@ const driveStreamingHandler = async (url) => {
   try {
     if (!url) return;
 
-    startStreaming(url);
+    // startStreaming(url);
   } catch (err) {
     console.error("Streaming error:", err);
   } // Runs in background}
@@ -279,17 +279,29 @@ const driveStreamingHandler = async (url) => {
  * 1. Update Tunnel Link from Raspberry Pi
  */
 var streamPath = "";
+var ESPUrl = "";
 app.post("/update-link", async (req, res) => {
-  const url = req.body.url;
-  if (!url) return res.status(400).send({ error: "URL is required" }); // Ensure the URL has the specific stream path for FFmpeg to grab
+  console.log("update link", req.body);
+  let url = null;
+  if (req?.body?.url) {
+    url = req.body.url;
+  } else {
+    ESPUrl = req.body.espUrl;
+    console.log("ESPUrl: ", ESPUrl);
+  }
 
-  streamPath = url.endsWith("/video_feed") ? url : `${url}/video_feed`; // // 1. Update DB to point to self // const db = readDB(); // db.systemState.public_url = selfUrl; // writeDB(db);
+  // if (!url) return res.status(400).send({ error: "URL is required" }); // Ensure the URL has the specific stream path for FFmpeg to grab
+  if (url !== null) {
+    streamPath = url.endsWith("/video_feed") ? url : `${url}/video_feed`; // // 1. Update DB to point to self // const db = readDB(); // db.systemState.public_url = selfUrl; // writeDB(db);
 
-  console.info("Starting stream from:", streamPath); // 2. Start the Recording logic (for Google Drive) // We wait 3 seconds to ensure the server is fully "listening"
-  setTimeout(() => {
-    console.info("📂 Recording started: Directing recorder to /live-stream...");
-    driveStreamingHandler(streamPath);
-  }, 3000); // await driveStreamingHandler(streamPath);
+    console.info("Starting stream from:", streamPath); // 2. Start the Recording logic (for Google Drive) // We wait 3 seconds to ensure the server is fully "listening"
+    setTimeout(() => {
+      console.info(
+        "📂 Recording started: Directing recorder to /live-stream..."
+      );
+      driveStreamingHandler(streamPath);
+    }, 3000); // await driveStreamingHandler(streamPath);
+  }
 
   res.send({ status: "Stream update initiated" });
 });
@@ -301,7 +313,9 @@ app.get("/live-stream", (req, res) => {
 /**
  * 2. Receive Fire Alert from Pi
  */
-app.post("/fire-alert", (req, res) => {
+app.post("/fire-alert", async (req, res) => {
+  console.log("fire detected");
+
   const { confidence, stream_url } = req.body;
   const db = readDB();
 
@@ -313,17 +327,16 @@ app.post("/fire-alert", (req, res) => {
     timestamp: new Date(),
   };
 
-  db.alerts.unshift(newAlert); // Add to beginning
-  db.alerts = db.alerts.slice(0, 50); // Keep last 50 alerts
-  db.systemState.is_fire_active = true;
-  db.systemState.last_alert_conf = confidence;
+  console.log("espUrl in /start: ", ESPUrl);
 
-  writeDB(db);
-  // function to sent twillio message
-  sendSMS(
-    "+918446726903",
-    `🚨 ALERT: Fire detected!\nConfidence: ${confidence}%\nTake immediate action!`
-  );
+  if (db.systemState.is_fire_active === false) {
+    db.systemState.is_fire_active = true;
+    db.systemState.last_alert_conf = confidence;
+    db.alerts.push(newAlert);
+    writeDB(db);
+    await axios.post(`${ESPUrl}/start`);
+  }
+
   console.info(`🔥 Fire Alert Saved! Conf: ${confidence}%`);
   res.status(200).send({ message: "Alert logged" });
 });
@@ -332,6 +345,17 @@ app.get("/live-stream", (req, res) => {
   res.json({ url: streamPath });
 });
 
+app.post("/pause-alert", async (req, res) => {
+  const db = readDB();
+  db.systemState.is_fire_active = false;
+  writeDB(db);
+  // if (db.systemState.is_fire_active === false) return;
+  // db.systemState.is_fire_active = false;
+  // writeDB(db);
+  console.log("espUrl in /pause-alert: ", ESPUrl);
+  await axios.post(`${ESPUrl}/pause`);
+  return res.status(200).send({ message: "Alert paused" });
+});
 /**
  * 4. Get System Status & Alerts (For Frontend)
  */
@@ -341,6 +365,54 @@ app.get("/status", (req, res) => {
     ...db.systemState,
     recent_alerts: db.alerts.slice(0, 5),
   });
+});
+
+app.post("/esp-sensor-trigger", async (req, res) => {
+  try {
+    console.log("🔥 ESP SENSOR TRIGGER RECEIVED");
+
+    const { deviceId, sensor, status, timestamp } = req.body;
+
+    console.log({
+      deviceId,
+      sensor,
+      status,
+      timestamp,
+    });
+    const db = readDB();
+    if (db.systemState.is_fire_active === true) {
+      // function to sent twillio message
+      const confidence = db.systemState.last_alert_conf;
+      sendSMS(
+        "+918446726903",
+        `🚨 ALERT: Fire detected!\nConfidence: ${confidence}%\nTake immediate action!`
+      );
+    }
+
+    console.log("🚨 Alert Saved");
+
+    // Start buzzer on ESP
+    if (ESPUrl) {
+      try {
+        await axios.post(`${ESPUrl}/start`);
+        console.log("🔔 Buzzer Started");
+      } catch (err) {
+        console.error("Failed to start buzzer:", err.message);
+      }
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Sensor trigger received",
+    });
+  } catch (err) {
+    console.error(err);
+
+    return res.status(500).json({
+      success: false,
+      error: err.message,
+    });
+  }
 });
 
 /**
@@ -442,6 +514,9 @@ app.get("/stream/:id", async (req, res) => {
 // ─────────────────────────────────────────────
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
+  const db = readDB();
+  db.systemState.is_fire_active = false;
+  writeDB(db);
   console.info(`
 🚀 Backend running on http://localhost:${PORT}
 📂 Data stored in: ${DB_FILE}

@@ -3,247 +3,443 @@
     "id": "pi_station_1",
     "public_url": "http://localhost:5000",
     "last_updated": "4/8/2026, 11:54:55 PM",
-    "is_fire_active": true,
-    "last_alert_conf": 0.31
+    "is_fire_active": false,
+    "last_alert_conf": 0.4
   },
   "alerts": [
     {
-      "id": 1776406201226,
+      "id": 1782233229750,
       "event": "FIRE_DETECTED",
-      "confidence": 0.31,
-      "stream_url": "https://surf-nut-italic-interface.trycloudflare.com/video_feed",
-      "timestamp": "2026-04-17T06:10:01.226Z"
+      "confidence": 0.44,
+      "stream_url": "https://newfoundland-asking-median-dare.trycloudflare.com",
+      "timestamp": "2026-06-23T16:47:09.750Z"
     },
     {
-      "id": 1776406166020,
+      "id": 1782232828386,
       "event": "FIRE_DETECTED",
-      "confidence": 0.32,
-      "stream_url": "https://surf-nut-italic-interface.trycloudflare.com/video_feed",
-      "timestamp": "2026-04-17T06:09:26.020Z"
+      "confidence": 0.62,
+      "stream_url": "https://newfoundland-asking-median-dare.trycloudflare.com",
+      "timestamp": "2026-06-23T16:40:28.386Z"
     },
     {
-      "id": 1776406132321,
+      "id": 1782232827789,
       "event": "FIRE_DETECTED",
-      "confidence": 0.41,
-      "stream_url": "https://surf-nut-italic-interface.trycloudflare.com/video_feed",
-      "timestamp": "2026-04-17T06:08:52.321Z"
+      "confidence": 0.53,
+      "stream_url": "https://newfoundland-asking-median-dare.trycloudflare.com",
+      "timestamp": "2026-06-23T16:40:27.789Z"
     },
     {
-      "id": 1776406103776,
+      "id": 1782232826504,
       "event": "FIRE_DETECTED",
-      "confidence": 0.47,
-      "stream_url": "https://surf-nut-italic-interface.trycloudflare.com",
-      "timestamp": "2026-04-17T06:08:23.776Z"
+      "confidence": 0.75,
+      "stream_url": "https://newfoundland-asking-median-dare.trycloudflare.com",
+      "timestamp": "2026-06-23T16:40:26.504Z"
     },
     {
-      "id": 1776405711946,
+      "id": 1782232392063,
       "event": "FIRE_DETECTED",
-      "confidence": 0.33,
-      "stream_url": "https://provincial-pregnancy-dragon-cart.trycloudflare.com/video_feed",
-      "timestamp": "2026-04-17T06:01:51.946Z"
+      "confidence": 0.39,
+      "stream_url": "https://deny-scanners-nick-cancer.trycloudflare.com",
+      "timestamp": "2026-06-23T16:33:12.063Z"
     },
     {
-      "id": 1776405660251,
+      "id": 1782231985051,
       "event": "FIRE_DETECTED",
       "confidence": 0.51,
-      "stream_url": "https://provincial-pregnancy-dragon-cart.trycloudflare.com/video_feed",
-      "timestamp": "2026-04-17T06:01:00.251Z"
+      "stream_url": "https://deny-scanners-nick-cancer.trycloudflare.com",
+      "timestamp": "2026-06-23T16:26:25.051Z"
     },
     {
-      "id": 1776405598535,
+      "id": 1782231984818,
       "event": "FIRE_DETECTED",
-      "confidence": 0.33,
-      "stream_url": "https://provincial-pregnancy-dragon-cart.trycloudflare.com",
-      "timestamp": "2026-04-17T05:59:58.535Z"
+      "confidence": 0.61,
+      "stream_url": "https://deny-scanners-nick-cancer.trycloudflare.com",
+      "timestamp": "2026-06-23T16:26:24.818Z"
     },
     {
-      "id": 1776404763207,
-      "event": "FIRE_DETECTED",
-      "confidence": 0.48,
-      "stream_url": "https://last-alike-sitemap-laboratories.trycloudflare.com",
-      "timestamp": "2026-04-17T05:46:03.207Z"
-    },
-    {
-      "id": 1776404487954,
-      "event": "FIRE_DETECTED",
-      "confidence": 0.4,
-      "stream_url": "https://holiday-penetration-member-long.trycloudflare.com",
-      "timestamp": "2026-04-17T05:41:27.954Z"
-    },
-    {
-      "id": 1776404438251,
-      "event": "FIRE_DETECTED",
-      "confidence": 0.32,
-      "stream_url": "https://holiday-penetration-member-long.trycloudflare.com",
-      "timestamp": "2026-04-17T05:40:38.251Z"
-    },
-    {
-      "id": 1776404402469,
-      "event": "FIRE_DETECTED",
-      "confidence": 0.71,
-      "stream_url": "https://holiday-penetration-member-long.trycloudflare.com",
-      "timestamp": "2026-04-17T05:40:02.469Z"
-    },
-    {
-      "id": 1776403610656,
-      "event": "FIRE_DETECTED",
-      "confidence": 0.31,
-      "stream_url": "https://toolbox-amend-satin-throughout.trycloudflare.com",
-      "timestamp": "2026-04-17T05:26:50.656Z"
-    },
-    {
-      "id": 1776403519424,
-      "event": "FIRE_DETECTED",
-      "confidence": 0.4,
-      "stream_url": "https://toolbox-amend-satin-throughout.trycloudflare.com",
-      "timestamp": "2026-04-17T05:25:19.424Z"
-    },
-    {
-      "id": 1776403518662,
-      "event": "FIRE_DETECTED",
-      "confidence": 0.41,
-      "stream_url": "https://toolbox-amend-satin-throughout.trycloudflare.com",
-      "timestamp": "2026-04-17T05:25:18.662Z"
-    },
-    {
-      "id": 1776403350421,
-      "event": "FIRE_DETECTED",
-      "confidence": 0.4,
-      "stream_url": "https://toolbox-amend-satin-throughout.trycloudflare.com",
-      "timestamp": "2026-04-17T05:22:30.421Z"
-    },
-    {
-      "id": 1776403349601,
-      "event": "FIRE_DETECTED",
-      "confidence": 0.65,
-      "stream_url": "https://toolbox-amend-satin-throughout.trycloudflare.com",
-      "timestamp": "2026-04-17T05:22:29.601Z"
-    },
-    {
-      "id": 1776403255828,
+      "id": 1782231508863,
       "event": "FIRE_DETECTED",
       "confidence": 0.6,
-      "stream_url": "https://toolbox-amend-satin-throughout.trycloudflare.com",
-      "timestamp": "2026-04-17T05:20:55.828Z"
+      "stream_url": "https://bio-rubber-fit-trademarks.trycloudflare.com",
+      "timestamp": "2026-06-23T16:18:28.863Z"
     },
     {
-      "id": 1776403183760,
+      "id": 1782231508175,
       "event": "FIRE_DETECTED",
-      "confidence": 0.49,
-      "stream_url": "https://toolbox-amend-satin-throughout.trycloudflare.com",
-      "timestamp": "2026-04-17T05:19:43.760Z"
+      "confidence": 0.58,
+      "stream_url": "https://bio-rubber-fit-trademarks.trycloudflare.com",
+      "timestamp": "2026-06-23T16:18:28.175Z"
     },
     {
-      "id": 1776402950229,
-      "event": "FIRE_DETECTED",
-      "confidence": 0.6,
-      "stream_url": "https://toolbox-amend-satin-throughout.trycloudflare.com",
-      "timestamp": "2026-04-17T05:15:50.229Z"
-    },
-    {
-      "id": 1776402949769,
-      "event": "FIRE_DETECTED",
-      "confidence": 0.38,
-      "stream_url": "https://toolbox-amend-satin-throughout.trycloudflare.com",
-      "timestamp": "2026-04-17T05:15:49.769Z"
-    },
-    {
-      "id": 1776402742864,
-      "event": "FIRE_DETECTED",
-      "confidence": 0.84,
-      "stream_url": "https://toolbox-amend-satin-throughout.trycloudflare.com",
-      "timestamp": "2026-04-17T05:12:22.865Z"
-    },
-    {
-      "id": 1776402742102,
-      "event": "FIRE_DETECTED",
-      "confidence": 0.32,
-      "stream_url": "https://toolbox-amend-satin-throughout.trycloudflare.com",
-      "timestamp": "2026-04-17T05:12:22.102Z"
-    },
-    {
-      "id": 1776402599897,
+      "id": 1782231507619,
       "event": "FIRE_DETECTED",
       "confidence": 0.37,
-      "stream_url": "https://toolbox-amend-satin-throughout.trycloudflare.com",
-      "timestamp": "2026-04-17T05:09:59.897Z"
+      "stream_url": "https://bio-rubber-fit-trademarks.trycloudflare.com",
+      "timestamp": "2026-06-23T16:18:27.619Z"
     },
     {
-      "id": 1776402500210,
+      "id": 1782231117460,
       "event": "FIRE_DETECTED",
-      "confidence": 0.35,
-      "stream_url": "https://photographs-tagged-objectives-induction.trycloudflare.com/video_feed",
-      "timestamp": "2026-04-17T05:08:20.210Z"
+      "confidence": 0.31,
+      "stream_url": "https://card-weather-donation-winner.trycloudflare.com",
+      "timestamp": "2026-06-23T16:11:57.460Z"
     },
     {
-      "id": 1776402444491,
+      "id": 1782231024858,
       "event": "FIRE_DETECTED",
-      "confidence": 0.32,
-      "stream_url": "https://photographs-tagged-objectives-induction.trycloudflare.com",
-      "timestamp": "2026-04-17T05:07:24.491Z"
+      "confidence": 0.44,
+      "stream_url": "https://card-weather-donation-winner.trycloudflare.com",
+      "timestamp": "2026-06-23T16:10:24.858Z"
     },
     {
-      "id": 1775714472210,
+      "id": 1781873375658,
       "event": "FIRE_DETECTED",
-      "confidence": 0.71,
-      "stream_url": "https://roller-acknowledged-introduce-industrial.trycloudflare.com",
-      "timestamp": "2026-04-09T06:01:12.210Z"
+      "confidence": 0.65,
+      "stream_url": "https://surround-occurring-angle-theorem.trycloudflare.com",
+      "timestamp": "2026-06-19T12:49:35.658Z"
     },
     {
-      "id": 1775629347822,
+      "id": 1781873374811,
       "event": "FIRE_DETECTED",
-      "confidence": 0.82,
-      "stream_url": "https://analyses-pgp-gadgets-ability.trycloudflare.com/video_feed",
-      "timestamp": "2026-04-08T06:22:27.822Z"
+      "confidence": 0.54,
+      "stream_url": "https://surround-occurring-angle-theorem.trycloudflare.com",
+      "timestamp": "2026-06-19T12:49:34.811Z"
     },
     {
-      "id": 1775629317199,
-      "event": "FIRE_DETECTED",
-      "confidence": 0.33,
-      "stream_url": "https://analyses-pgp-gadgets-ability.trycloudflare.com/video_feed",
-      "timestamp": "2026-04-08T06:21:57.199Z"
-    },
-    {
-      "id": 1775629275410,
-      "event": "FIRE_DETECTED",
-      "confidence": 0.89,
-      "stream_url": "https://analyses-pgp-gadgets-ability.trycloudflare.com",
-      "timestamp": "2026-04-08T06:21:15.410Z"
-    },
-    {
-      "id": 1775629271944,
-      "event": "FIRE_DETECTED",
-      "confidence": 0.88,
-      "stream_url": "https://analyses-pgp-gadgets-ability.trycloudflare.com",
-      "timestamp": "2026-04-08T06:21:11.944Z"
-    },
-    {
-      "id": 1775629233757,
-      "event": "FIRE_DETECTED",
-      "confidence": 0.79,
-      "stream_url": "https://analyses-pgp-gadgets-ability.trycloudflare.com",
-      "timestamp": "2026-04-08T06:20:33.757Z"
-    },
-    {
-      "id": 1775629006676,
+      "id": 1781873373988,
       "event": "FIRE_DETECTED",
       "confidence": 0.5,
-      "stream_url": "https://singles-brooklyn-dana-legislative.trycloudflare.com/video_feed",
-      "timestamp": "2026-04-08T06:16:46.676Z"
+      "stream_url": "https://surround-occurring-angle-theorem.trycloudflare.com",
+      "timestamp": "2026-06-19T12:49:33.988Z"
     },
     {
-      "id": 1775628975156,
+      "id": 1781873322350,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.64,
+      "stream_url": "https://met-ghz-capabilities-vice.trycloudflare.com",
+      "timestamp": "2026-06-19T12:48:42.350Z"
+    },
+    {
+      "id": 1781873321447,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.65,
+      "stream_url": "https://met-ghz-capabilities-vice.trycloudflare.com",
+      "timestamp": "2026-06-19T12:48:41.447Z"
+    },
+    {
+      "id": 1781873320286,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.64,
+      "stream_url": "https://met-ghz-capabilities-vice.trycloudflare.com",
+      "timestamp": "2026-06-19T12:48:40.286Z"
+    },
+    {
+      "id": 1781873320163,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.3,
+      "stream_url": "https://met-ghz-capabilities-vice.trycloudflare.com",
+      "timestamp": "2026-06-19T12:48:40.163Z"
+    },
+    {
+      "id": 1781873165720,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.53,
+      "stream_url": "https://designs-gotta-celebrities-plane.trycloudflare.com",
+      "timestamp": "2026-06-19T12:46:05.720Z"
+    },
+    {
+      "id": 1781873164969,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.46,
+      "stream_url": "https://designs-gotta-celebrities-plane.trycloudflare.com",
+      "timestamp": "2026-06-19T12:46:04.969Z"
+    },
+    {
+      "id": 1781873164147,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.43,
+      "stream_url": "https://designs-gotta-celebrities-plane.trycloudflare.com",
+      "timestamp": "2026-06-19T12:46:04.147Z"
+    },
+    {
+      "id": 1781873134197,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.58,
+      "stream_url": "https://designs-gotta-celebrities-plane.trycloudflare.com",
+      "timestamp": "2026-06-19T12:45:34.197Z"
+    },
+    {
+      "id": 1781873133581,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.45,
+      "stream_url": "https://designs-gotta-celebrities-plane.trycloudflare.com",
+      "timestamp": "2026-06-19T12:45:33.581Z"
+    },
+    {
+      "id": 1781873131838,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.37,
+      "stream_url": "https://designs-gotta-celebrities-plane.trycloudflare.com",
+      "timestamp": "2026-06-19T12:45:31.838Z"
+    },
+    {
+      "id": 1781872959922,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.4,
+      "stream_url": "https://definitely-sparc-beginner-boat.trycloudflare.com",
+      "timestamp": "2026-06-19T12:42:39.922Z"
+    },
+    {
+      "id": 1781872950924,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.36,
+      "stream_url": "https://definitely-sparc-beginner-boat.trycloudflare.com",
+      "timestamp": "2026-06-19T12:42:30.924Z"
+    },
+    {
+      "id": 1781872944913,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.36,
+      "stream_url": "https://definitely-sparc-beginner-boat.trycloudflare.com",
+      "timestamp": "2026-06-19T12:42:24.913Z"
+    },
+    {
+      "id": 1781872612722,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.65,
+      "stream_url": "https://launches-stability-come-placement.trycloudflare.com",
+      "timestamp": "2026-06-19T12:36:52.722Z"
+    },
+    {
+      "id": 1781872611942,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.44,
+      "stream_url": "https://launches-stability-come-placement.trycloudflare.com",
+      "timestamp": "2026-06-19T12:36:51.942Z"
+    },
+    {
+      "id": 1781872611007,
       "event": "FIRE_DETECTED",
       "confidence": 0.32,
-      "stream_url": "https://singles-brooklyn-dana-legislative.trycloudflare.com/video_feed",
-      "timestamp": "2026-04-08T06:16:15.156Z"
+      "stream_url": "https://launches-stability-come-placement.trycloudflare.com",
+      "timestamp": "2026-06-19T12:36:51.007Z"
     },
     {
-      "id": 1775628916151,
+      "id": 1781872579598,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.33,
+      "stream_url": "https://launches-stability-come-placement.trycloudflare.com",
+      "timestamp": "2026-06-19T12:36:19.598Z"
+    },
+    {
+      "id": 1781872578837,
       "event": "FIRE_DETECTED",
       "confidence": 0.7,
-      "stream_url": "https://singles-brooklyn-dana-legislative.trycloudflare.com/video_feed",
-      "timestamp": "2026-04-08T06:15:16.151Z"
+      "stream_url": "https://launches-stability-come-placement.trycloudflare.com",
+      "timestamp": "2026-06-19T12:36:18.837Z"
+    },
+    {
+      "id": 1781872532275,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.38,
+      "stream_url": "https://bachelor-chelsea-follow-websites.trycloudflare.com",
+      "timestamp": "2026-06-19T12:35:32.275Z"
+    },
+    {
+      "id": 1781872531243,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.33,
+      "stream_url": "https://bachelor-chelsea-follow-websites.trycloudflare.com",
+      "timestamp": "2026-06-19T12:35:31.243Z"
+    },
+    {
+      "id": 1781872522182,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.44,
+      "stream_url": "https://bachelor-chelsea-follow-websites.trycloudflare.com",
+      "timestamp": "2026-06-19T12:35:22.182Z"
+    },
+    {
+      "id": 1781872364456,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.35,
+      "stream_url": "https://hiring-crossing-integrating-satisfy.trycloudflare.com",
+      "timestamp": "2026-06-19T12:32:44.456Z"
+    },
+    {
+      "id": 1781872330005,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.63,
+      "stream_url": "https://hiring-crossing-integrating-satisfy.trycloudflare.com",
+      "timestamp": "2026-06-19T12:32:10.005Z"
+    },
+    {
+      "id": 1781872329135,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.53,
+      "stream_url": "https://hiring-crossing-integrating-satisfy.trycloudflare.com",
+      "timestamp": "2026-06-19T12:32:09.135Z"
+    },
+    {
+      "id": 1781872327655,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.44,
+      "stream_url": "https://hiring-crossing-integrating-satisfy.trycloudflare.com",
+      "timestamp": "2026-06-19T12:32:07.655Z"
+    },
+    {
+      "id": 1781872296049,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.42,
+      "stream_url": "https://hiring-crossing-integrating-satisfy.trycloudflare.com",
+      "timestamp": "2026-06-19T12:31:36.049Z"
+    },
+    {
+      "id": 1781872295074,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.68,
+      "stream_url": "https://hiring-crossing-integrating-satisfy.trycloudflare.com",
+      "timestamp": "2026-06-19T12:31:35.074Z"
+    },
+    {
+      "id": 1781872294904,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.74,
+      "stream_url": "https://hiring-crossing-integrating-satisfy.trycloudflare.com",
+      "timestamp": "2026-06-19T12:31:34.904Z"
+    },
+    {
+      "id": 1781872293397,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.35,
+      "stream_url": "https://hiring-crossing-integrating-satisfy.trycloudflare.com",
+      "timestamp": "2026-06-19T12:31:33.397Z"
+    },
+    {
+      "id": 1781872172820,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.44,
+      "stream_url": "https://hiring-crossing-integrating-satisfy.trycloudflare.com",
+      "timestamp": "2026-06-19T12:29:32.820Z"
+    },
+    {
+      "id": 1781872171609,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.58,
+      "stream_url": "https://hiring-crossing-integrating-satisfy.trycloudflare.com",
+      "timestamp": "2026-06-19T12:29:31.609Z"
+    },
+    {
+      "id": 1781872170153,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.53,
+      "stream_url": "https://hiring-crossing-integrating-satisfy.trycloudflare.com",
+      "timestamp": "2026-06-19T12:29:30.153Z"
+    },
+    {
+      "id": 1781872139521,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.51,
+      "stream_url": "https://hiring-crossing-integrating-satisfy.trycloudflare.com",
+      "timestamp": "2026-06-19T12:28:59.521Z"
+    },
+    {
+      "id": 1781872105937,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.74,
+      "stream_url": "https://hiring-crossing-integrating-satisfy.trycloudflare.com",
+      "timestamp": "2026-06-19T12:28:25.937Z"
+    },
+    {
+      "id": 1781872066568,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.6,
+      "stream_url": "https://hiring-crossing-integrating-satisfy.trycloudflare.com",
+      "timestamp": "2026-06-19T12:27:46.568Z"
+    },
+    {
+      "id": 1782235693665,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.3,
+      "stream_url": "https://proper-true-importantly-statistics.trycloudflare.com",
+      "timestamp": "2026-06-23T17:28:13.665Z"
+    },
+    {
+      "id": 1782236209275,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.35,
+      "stream_url": "https://attempting-boundaries-quarters-html.trycloudflare.com",
+      "timestamp": "2026-06-23T17:36:49.275Z"
+    },
+    {
+      "id": 1782236327848,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.33,
+      "stream_url": "https://plenty-tide-violations-euro.trycloudflare.com",
+      "timestamp": "2026-06-23T17:38:47.848Z"
+    },
+    {
+      "id": 1782236358110,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.3,
+      "stream_url": "https://plenty-tide-violations-euro.trycloudflare.com",
+      "timestamp": "2026-06-23T17:39:18.110Z"
+    },
+    {
+      "id": 1782237513055,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.33,
+      "stream_url": "https://plenty-tide-violations-euro.trycloudflare.com",
+      "timestamp": "2026-06-23T17:58:33.055Z"
+    },
+    {
+      "id": 1782237898576,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.73,
+      "stream_url": "https://keith-intent-contacted-hospitals.trycloudflare.com",
+      "timestamp": "2026-06-23T18:04:58.576Z"
+    },
+    {
+      "id": 1782237954787,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.55,
+      "stream_url": "https://keith-intent-contacted-hospitals.trycloudflare.com",
+      "timestamp": "2026-06-23T18:05:54.787Z"
+    },
+    {
+      "id": 1782238037043,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.44,
+      "stream_url": "https://keith-intent-contacted-hospitals.trycloudflare.com",
+      "timestamp": "2026-06-23T18:07:17.043Z"
+    },
+    {
+      "id": 1782238142702,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.3,
+      "stream_url": "https://keith-intent-contacted-hospitals.trycloudflare.com",
+      "timestamp": "2026-06-23T18:09:02.702Z"
+    },
+    {
+      "id": 1782311901674,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.46,
+      "stream_url": "https://underwear-increases-applies-settlement.trycloudflare.com",
+      "timestamp": "2026-06-24T14:38:21.674Z"
+    },
+    {
+      "id": 1782311936159,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.62,
+      "stream_url": "https://underwear-increases-applies-settlement.trycloudflare.com",
+      "timestamp": "2026-06-24T14:38:56.159Z"
+    },
+    {
+      "id": 1782312129348,
+      "event": "FIRE_DETECTED",
+      "confidence": 0.4,
+      "stream_url": "https://underwear-increases-applies-settlement.trycloudflare.com",
+      "timestamp": "2026-06-24T14:42:09.348Z"
     }
   ]
 }
